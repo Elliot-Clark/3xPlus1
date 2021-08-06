@@ -1,46 +1,62 @@
+import React, { Component } from "react";
 import './App.css';
 
-state = {
-  outputs : []
-}
 
-let inputNumber = 0;
-
-let init = () => {
-  outputs = [];
-  inputNumber = document.getElementById("inputNumber").value;
-  outputs.push(parseInt(inputNumber));
-  main();
-}
-
-
-let main = () => {
-  if (inputNumber === 1) {
-    outputs.push(inputNumber);
-    console.log(outputs);
-    return
+class App extends Component {
+  
+  state = {
+    inputNumber: '',
+    outputs : []
   }
-  if (inputNumber % 2 > 0) {
-    inputNumber = inputNumber * 3 + 1;
-    outputs.push(inputNumber);
-    main();
+
+  init = () => {
+    let userInputtedNumber = parseInt(document.getElementById("inputNumber").value);
+    this.setState({ 
+      inputNumber: userInputtedNumber,
+      outputs: [userInputtedNumber]
+    }, () => {
+      this.main();
+    });
   }
-  if (inputNumber % 2 === 0) {
-    inputNumber = inputNumber / 2;
-    outputs.push(inputNumber);
-    main();
+
+
+  main = () => {
+    console.log(this.state.outputs);
+    if (this.state.inputNumber === 1) {
+      this.state.outputs.push(1);
+      return
+    }
+    if (this.state.inputNumber % 2 > 0) {
+      //Odd Number
+      this.setState({
+        inputNumber: (this.state.inputNumber * 3 + 1),
+      }, () => {
+        this.state.outputs.push(this.state.inputNumber);
+        this.main();
+      });
+    }
+    if (this.state.inputNumber % 2 === 0) {
+      //Even Number
+      this.setState({
+        inputNumber: (this.state.inputNumber / 2),
+      }, () => {
+        this.state.outputs.push(this.state.inputNumber);
+        this.main();
+      });
+    }
   }
+
+
+  render() {
+    return (
+      <div className="App">
+        <input id="inputNumber"></input>
+        <button onClick={this.init}>Do Math</button> <br></br>
+        {this.state.inputNumber} <br></br>
+        {this.state.output}
+      </div>
+    );
+  }
+
 }
-
-
-function App() {
-  return (
-    <div className="App">
-      <input id="inputNumber"></input>
-      <button onClick={init}>Do Math</button>
-      <div>{outputs}</div>
-    </div>
-  );
-}
-
 export default App;
