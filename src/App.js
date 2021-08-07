@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Canvas from './Canvas'
 import './App.css';
 
 
@@ -13,7 +14,6 @@ class App extends Component {
     let userInputtedNumber = parseInt(document.getElementById("inputNumber").value);
     this.setState({ 
       inputNumber: userInputtedNumber,
-      numberCollection: [userInputtedNumber]
     }, () => {
       this.mainComputation();
     });
@@ -21,7 +21,7 @@ class App extends Component {
 
   mainComputation = () => {
     let count = this.state.inputNumber
-    let outputs = []
+    let outputs = [count]
     const calculate = () => {
       if (count === 1) {
         //When the sequence eventually reduces down to 1, the recursive process ends.
@@ -49,12 +49,21 @@ class App extends Component {
   }
 
   render() {
+ 
+    let items = []
+    for (const [index, value] of this.state.numberCollection.entries()) {
+      items.push(<li key={index}>{value}</li>)
+    }
+
     return (
       <div className="App">
         <input id="inputNumber"></input>
         <button onClick={this.init}>Do Math</button> <br></br>
         {this.state.inputNumber} <br></br>
-        {this.state.output}
+        {items}
+        <Canvas 
+          numberCollection = {this.state.numberCollection}
+        />
       </div>
     );
   }
