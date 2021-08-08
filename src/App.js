@@ -23,13 +23,13 @@ class App extends Component {
     let count = this.state.inputNumber
     let outputs = [count]
     const calculate = () => {
-      if (count === 1) {
+      if (count === 1 && outputs.length > 50) {
         //When the sequence eventually reduces down to 1, the recursive process ends.
         //In the event you discover a number that doesn't reduce down to the 4,2,1 loop, contact your local mathematician. They should be very interested to hear about it.
         return
       }
-      //While not infinite, some numbers can have a sequence far to long to display so we limit it to 25 before ending.
-      if (count % 2 > 0 && outputs.length < 25) {
+      //While not infinite, some numbers can have a sequence far to long to display so we limit it to 50 before ending.
+      if (count % 2 > 0 && outputs.length < 50) {
         //Odd Number. Multiply the number by 3 and add 1 then run method again.
         count = count * 3 + 1;
         outputs.push(count);
@@ -50,17 +50,16 @@ class App extends Component {
 
   render() {
  
-    let items = []
-    for (const [index, value] of this.state.numberCollection.entries()) {
-      items.push(<li key={index}>{value}</li>)
-    }
+    // let items = []
+    // for (const [index, value] of this.state.numberCollection.entries()) {
+    //   items.push(<li key={index}>{value}</li>)
+    // }
 
     return (
       <div className="App">
         <input id="inputNumber"></input>
         <button onClick={this.init}>Do Math</button> <br></br>
         {this.state.inputNumber} <br></br>
-        {items}
         <Canvas 
           numberCollection = {this.state.numberCollection}
         />
