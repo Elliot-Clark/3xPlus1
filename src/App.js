@@ -23,7 +23,7 @@ class App extends Component {
 
   mainComputation = () => {
     let count = this.state.inputNumber
-    if (count < 0) {
+    if (count < 1) {
       return
     }
     let outputs = [count]
@@ -50,21 +50,6 @@ class App extends Component {
     calculate();
     this.setState({numberCollection: outputs});
   }
-  
-  // componentDidMount(){
-  //   setInterval(() =>{
-  //     if (this.state.idle) {
-  //       let randomNumber = Math.floor(Math.random() * 999 + 10);
-  //     this.setState({ 
-  //       inputNumber: randomNumber,
-  //     }, () => {
-  //       this.mainComputation();
-  //     });
-  //     }
-  //   }, 
-  //     4000
-  //   );
-  // }
 
   render() {
  

@@ -42,9 +42,9 @@ const Canvas = (props) => {
             ctx.strokeStyle = "gray";
             x = (i+1)/(arrLength) * width * .85;
             xArray.push(x);
-            y = array[i]/arrLargest * -height * .85 - 10;
-            yArray.push(y - 10);
-            ctx.lineTo(x, y - 10)
+            y = array[i]/arrLargest * -height * .85;
+            yArray.push(y);
+            ctx.lineTo(x, y)
             ctx.stroke();
         }
         // Draws the circles with the numbers in them on the graph
@@ -52,15 +52,15 @@ const Canvas = (props) => {
         for (let i = 0; i < arrLength; i++) {
             ctx.beginPath();
             ctx.strokeStyle = "black"; 
-            ctx.arc(xArray[i], yArray[i], 20, 0, 2 * Math.PI);
+            ctx.arc(xArray[i], yArray[i] - 5, 20, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.fillStyle = "grey";
-            ctx.arc(xArray[i], yArray[i], 20, 0, 2 * Math.PI);
+            ctx.arc(xArray[i], yArray[i] - 5, 20, 0, 2 * Math.PI);
             ctx.fill();
             ctx.font = "bold 18px Arial";
             ctx.textAlign="center";
             ctx.fillStyle = 'yellow';
-            ctx.fillText(array[i], xArray[i], yArray[i]+ 5);
+            ctx.fillText(array[i], xArray[i], yArray[i]);
         }
     }
     
