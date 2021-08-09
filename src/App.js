@@ -60,6 +60,18 @@ class App extends Component {
         runStart();
       }
     });
+    setInterval(() =>{
+      if (this.state.idle) {
+        let randomNumber = Math.floor(Math.random() * 999 + 10);
+      this.setState({ 
+        inputNumber: randomNumber,
+      }, () => {
+        this.mainComputation();
+      });
+      }
+    }, 
+      4000
+    );
   }
 
   render() {

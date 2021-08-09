@@ -52,10 +52,14 @@ const Canvas = (props) => {
         for (let i = 0; i < arrLength; i++) {
             ctx.beginPath();
             ctx.strokeStyle = "black"; 
-            ctx.arc(xArray[i], yArray[i] - 5, 20, 0, 2 * Math.PI);
+
+            //Sets the size of each circle based on how many digits in each number for better fitting sizes.
+            let circleSize = array[i].toString().split('').length * 5 + 5;
+
+            ctx.arc(xArray[i], yArray[i] - 5, circleSize, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.fillStyle = "grey";
-            ctx.arc(xArray[i], yArray[i] - 5, 20, 0, 2 * Math.PI);
+            ctx.arc(xArray[i], yArray[i] - 5, circleSize, 0, 2 * Math.PI);
             ctx.fill();
             ctx.font = "bold 18px Arial";
             ctx.textAlign="center";
