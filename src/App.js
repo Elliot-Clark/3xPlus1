@@ -51,6 +51,17 @@ class App extends Component {
     this.setState({numberCollection: outputs});
   }
 
+  componentDidMount() {
+    const runStart = () => {
+      this.init();
+    }
+    document.getElementById('inputNumber').addEventListener("keyup",function(e){
+      if (e.keyCode === 13) {
+        runStart();
+      }
+    });
+  }
+
   render() {
  
     // let items = []
