@@ -51,28 +51,28 @@ class App extends Component {
     this.setState({numberCollection: outputs});
   }
 
-  componentDidMount() {
-    const runStart = () => {
-      this.init();
-    }
-    document.getElementById('inputNumber').addEventListener("keyup",function(e){
-      if (e.keyCode === 13) {
-        runStart();
-      }
-    });
-    setInterval(() =>{
-      if (this.state.idle) {
-        let randomNumber = Math.floor(Math.random() * 999 + 10);
-      this.setState({ 
-        inputNumber: randomNumber,
-      }, () => {
-        this.mainComputation();
-      });
-      }
-    }, 
-      4000
-    );
-  }
+  // componentDidMount() {
+  //   const runStart = () => {
+  //     this.init();
+  //   }
+  //   document.getElementById('inputNumber').addEventListener("keyup",function(e){
+  //     if (e.keyCode === 13) {
+  //       runStart();
+  //     }
+  //   });
+  //   setInterval(() =>{
+  //     if (this.state.idle) {
+  //       let randomNumber = Math.floor(Math.random() * 999 + 10);
+  //     this.setState({ 
+  //       inputNumber: randomNumber,
+  //     }, () => {
+  //       this.mainComputation();
+  //     });
+  //     }
+  //   }, 
+  //     4000
+  //   );
+  // }
 
   render() {
  

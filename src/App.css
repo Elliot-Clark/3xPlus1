@@ -1,3 +1,15 @@
-.test {
-    position: relative;
+/* 
+BG-Color : #191F23
+Main-Text : #717577
+Sidebar-Color: #12181C
+Sidebar-Text: #767D80
+Sidebar-Border: #646F71
+
+*/
+
+
+
+.App {
+    background-color: #191F23;
+    color: #717577;
 }
