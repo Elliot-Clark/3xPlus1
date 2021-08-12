@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Canvas from './Canvas'
 import './App.css';
 
+// Show inputted number 
+// Show highest number
+// Show length of seuqnece
 
 class App extends Component {
   

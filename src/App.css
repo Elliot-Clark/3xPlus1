@@ -12,4 +12,6 @@ Sidebar-Border: #646F71
 .App {
     background-color: #191F23;
     color: #717577;
+    height: 100vh;
+    width: 100vw;
 }
