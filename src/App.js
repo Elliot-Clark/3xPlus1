@@ -62,6 +62,7 @@ class App extends Component {
     document.getElementsByClassName('inputNumber')[0].addEventListener("keyup",function(e){
       if (e.keyCode === 13) {
         runStart();
+        document.getElementsByClassName('inputNumber')[0].value = '';
       }
     });
     // setInterval(() =>{
@@ -90,16 +91,19 @@ class App extends Component {
 
         <div id="sidebar">
           <div id="logo">Logo Placeholder</div>
-            fewfwf
+          <div id="stats"></div>
+            
         </div>
-        <div id="rightWrapper">
+        <div id="leftWrapper">
           <div id="inputWrapper">
             <input className="inputNumber" title="Input any positive integer and press Enter to run"></input>
           </div>
           <Canvas 
             numberCollection = {this.state.numberCollection}
           />
-          <div id="infoText"></div>
+          <div id="infoText">
+            <p>ffakwlfl fewlfnewa fwenaklewnfl e</p>
+          </div>
         </div>
 
         

@@ -11,7 +11,7 @@ const Canvas = (props) => {
         arrLargest = 20;
     }
 
-    const width = window.innerWidth * .9;
+    const width = window.innerWidth;
     const height = window.innerHeight * .5;
     
     const draw = ctx => {
@@ -19,14 +19,14 @@ const Canvas = (props) => {
 
         ctx.setTransform(1, 0, 0, 1, width * .1 , height);
         ctx.beginPath();
-        ctx.strokeStyle = "gray"; // Horizontal Graph Line
+        ctx.strokeStyle = '#383f41'; // Horizontal Graph Line
         ctx.moveTo(0, 0);
         ctx.lineWidth = 2;
         ctx.lineTo(width, 0);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.strokeStyle = "gray"; // Vertical Graph Line
+        ctx.strokeStyle = '#383f41'; // Vertical Graph Line
         ctx.moveTo(0, 0);
         ctx.lineTo(0, -height);
         ctx.stroke();
@@ -39,7 +39,7 @@ const Canvas = (props) => {
         for (let i = 0; i < arrLength; i++) {
             ctx.beginPath(); //Graphs the lines from one number to the next
             ctx.moveTo(x, y);
-            ctx.strokeStyle = "gray";
+            ctx.strokeStyle = "#383f41";
             x = (i+1)/(arrLength) * width * .85;
             xArray.push(x);
             y = array[i]/arrLargest * -height * .85;
@@ -51,14 +51,14 @@ const Canvas = (props) => {
         // To layer circles over lines this seperate for loop is used after the first, rather than combining them. 
         for (let i = 0; i < arrLength; i++) {
             ctx.beginPath();
-            ctx.strokeStyle = "black"; 
+            ctx.strokeStyle = "#383f41"; 
 
             //Sets the size of each circle based on how many digits in each number for better fitting sizes.
             let circleSize = array[i].toString().split('').length * 5 + 8;
 
             ctx.arc(xArray[i], yArray[i] - 8, circleSize, 0, 2 * Math.PI);
             ctx.stroke();
-            ctx.fillStyle = "grey";
+            ctx.fillStyle = "#ccc";
             ctx.arc(xArray[i], yArray[i] - 8, circleSize, 0, 2 * Math.PI);
             ctx.fill();
             ctx.font = "bold 28px Arial";

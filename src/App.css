@@ -13,6 +13,7 @@ Sidebar-Border: #646F71
     width: 100vw;
     display: flex;
     overflow: hidden;
+    color: #717577;
 }
 
 /* * {
@@ -20,20 +21,23 @@ Sidebar-Border: #646F71
 } */
 
 #sidebar {
-    color: blue;
     height: 100vh;
     width: 10vw;
-    background-color: pink;
+    background-color: #121a1d;
+    border-right: 2px solid #383f41;
 }
 
 #logo {
-    height: 100px;
-    width:  100px;
-    background-color: blue;
-    margin: 1rem;
+    min-height: 10vh;
+    width:  98%;
+    background-color: #121a1d;
+    border-bottom: 2px solid #383f41;
 }
 
-#rightWrapper {
+#stat {
+}
+
+#leftWrapper {
     width: 90vw;
     height: 10vh;
     display: flex;
@@ -41,9 +45,10 @@ Sidebar-Border: #646F71
 } 
 
 #inputWrapper {
-    background-color: red;
+    background-color: #151d20   ;
     width: 100vw;
     min-height: 10vh;
+    border-bottom: 2px solid #383f41;
 }
 
 .inputNumber {
@@ -67,13 +72,11 @@ Sidebar-Border: #646F71
 .graph {
     width: 100%;
     min-height: 65vh;
-    background-color: yellow;
+    background-color: #192124;
 }
 
 #infoText {
-    color: violet;
     min-height: 25vh;
     width: 100%;
-    background-color: blue;
-    
+    background-color: #121a1d;
 }
