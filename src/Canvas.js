@@ -54,14 +54,14 @@ const Canvas = (props) => {
             ctx.strokeStyle = "black"; 
 
             //Sets the size of each circle based on how many digits in each number for better fitting sizes.
-            let circleSize = array[i].toString().split('').length * 5 + 5;
+            let circleSize = array[i].toString().split('').length * 5 + 8;
 
-            ctx.arc(xArray[i], yArray[i] - 5, circleSize, 0, 2 * Math.PI);
+            ctx.arc(xArray[i], yArray[i] - 8, circleSize, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.fillStyle = "grey";
-            ctx.arc(xArray[i], yArray[i] - 5, circleSize, 0, 2 * Math.PI);
+            ctx.arc(xArray[i], yArray[i] - 8, circleSize, 0, 2 * Math.PI);
             ctx.fill();
-            ctx.font = "bold 18px Arial";
+            ctx.font = "bold 28px Arial";
             ctx.textAlign="center";
             ctx.fillStyle = 'yellow';
             ctx.fillText(array[i], xArray[i], yArray[i]);
@@ -75,7 +75,7 @@ const Canvas = (props) => {
     });
 
     return (
-        <canvas className="test" width={width} height={height} ref={canvasRef}/>
+        <canvas className="graph" width={width} height={height} ref={canvasRef}/>
     )
 }
 

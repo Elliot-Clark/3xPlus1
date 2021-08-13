@@ -5,6 +5,7 @@ import './App.css';
 // Show inputted number 
 // Show highest number
 // Show length of seuqnece
+// Information
 
 class App extends Component {
   
@@ -15,7 +16,7 @@ class App extends Component {
   }
 
   init = () => {
-    let userInputtedNumber = parseInt(document.getElementById("inputNumber").value);
+    let userInputtedNumber = parseInt(document.getElementsByClassName("inputNumber")[0].value);
     this.setState({ 
       inputNumber: userInputtedNumber,
       idle: false
@@ -54,28 +55,28 @@ class App extends Component {
     this.setState({numberCollection: outputs});
   }
 
-  // componentDidMount() {
-  //   const runStart = () => {
-  //     this.init();
-  //   }
-  //   document.getElementById('inputNumber').addEventListener("keyup",function(e){
-  //     if (e.keyCode === 13) {
-  //       runStart();
-  //     }
-  //   });
-  //   setInterval(() =>{
-  //     if (this.state.idle) {
-  //       let randomNumber = Math.floor(Math.random() * 999 + 10);
-  //     this.setState({ 
-  //       inputNumber: randomNumber,
-  //     }, () => {
-  //       this.mainComputation();
-  //     });
-  //     }
-  //   }, 
-  //     4000
-  //   );
-  // }
+  componentDidMount() {
+    const runStart = () => {
+      this.init();
+    }
+    document.getElementsByClassName('inputNumber')[0].addEventListener("keyup",function(e){
+      if (e.keyCode === 13) {
+        runStart();
+      }
+    });
+    // setInterval(() =>{
+    //   if (this.state.idle) {
+    //     let randomNumber = Math.floor(Math.random() * 999 + 10);
+    //   this.setState({ 
+    //     inputNumber: randomNumber,
+    //   }, () => {
+    //     this.mainComputation();
+    //   });
+    //   }
+    // }, 
+    //   4000
+    // );
+  }
 
   render() {
  
@@ -86,14 +87,22 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input id="inputNumber"></input>
-        <button onClick={this.init}>Do Math</button>
-        <br></br>
-        {this.state.inputNumber} 
-        <br></br>
-        <Canvas 
-          numberCollection = {this.state.numberCollection}
-        />
+
+        <div id="sidebar">
+          <div id="logo">Logo Placeholder</div>
+            fewfwf
+        </div>
+        <div id="rightWrapper">
+          <div id="inputWrapper">
+            <input className="inputNumber" title="Input any positive integer and press Enter to run"></input>
+          </div>
+          <Canvas 
+            numberCollection = {this.state.numberCollection}
+          />
+          <div id="infoText"></div>
+        </div>
+
+        
       </div>
     );
   }
