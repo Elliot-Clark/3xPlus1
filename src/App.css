@@ -9,11 +9,9 @@ Sidebar-Border: #646F71
 
 .App {
     background-color: #191F23;
-    height: 100vh;
-    width: 100vw;
     display: flex;
-    overflow: hidden;
     color: #717577;
+    overflow: hidden;
 }
 
 /* * {
@@ -29,15 +27,19 @@ Sidebar-Border: #646F71
 
 #logo {
     min-height: 10vh;
+    line-height: 10vh;
     width:  98%;
     background-color: #121a1d;
     border-bottom: 2px solid #383f41;
+    font-size: 3rem;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
 }
 
 #stat {
 }
 
-#leftWrapper {
+#rightWrapper {
     width: 90vw;
     height: 10vh;
     display: flex;
@@ -54,11 +56,12 @@ Sidebar-Border: #646F71
 .inputNumber {
     display: block;
     height: 35px;
-    width: 105px;
+    width: 8vw;
+    min-width: 105px;
     margin: 1rem;
     margin-left: 5vw;
     margin-top: 3vh;
-    padding-left: 25px;
+    padding-left: 15px;
     padding-right: 15px;
     border-radius: 7px;
     border: none;
@@ -69,14 +72,48 @@ Sidebar-Border: #646F71
     font-size: 21px;
 }
 
+#graphWrapper {
+    display: flex;
+    justify-content: left;
+}
+
+#forwardBack {
+    min-width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#forwardBack button {
+    width: 100px;
+    font-size: 5rem;
+    border-radius: 50px;
+    margin: 20%;
+    cursor: pointer;
+    border: 5px solid #383f41;
+}
+
+#forwardBack button:active {
+    transform: scale(.9);
+}
+
+#back {
+
+}
+
 .graph {
-    width: 100%;
+    min-width: 80%;
     min-height: 65vh;
     background-color: #192124;
 }
 
 #infoText {
     min-height: 25vh;
-    width: 100%;
+    width: 96%;
     background-color: #121a1d;
+    border-top: 2px solid #383f41;
+    padding: 2%;
+    text-indent: 50px;
+    font-size: 21px;
 }
