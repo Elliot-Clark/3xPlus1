@@ -85,17 +85,23 @@ Sidebar-Border: #646F71
     justify-content: space-around;
 }
 
+#forwardBack span {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
 #forwardBack button {
     width: 100px;
     font-size: 5rem;
     border-radius: 50px;
-    margin: 20%;
     cursor: pointer;
     border: 5px solid #383f41;
 }
 
 #forwardBack button:active {
     transform: scale(.9);
+    color: green;
 }
 
 #back {

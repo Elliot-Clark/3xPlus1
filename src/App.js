@@ -5,8 +5,7 @@ import './App.css';
 // Show inputted number 
 // Show highest number
 // Show length of sequences
-// Next and Previous buttons for scrolling through longer sequences 
-// Information
+// Button for Random
 
 class App extends Component {
   
@@ -47,8 +46,10 @@ class App extends Component {
         //In the event you discover a number that doesn't reduce down to the 4,2,1 loop, contact your local mathematician. They should be very interested to hear about it.
         return
       }
-      //While not infinite, some numbers can have a sequence far to long to display so we limit it to a set number before ending.
-      if (outputs.length > 32) {
+      //While not infinite, some numbers can have a sequence far to long to display so we limit the sequence
+      //This is done by condensing the array of all numbers into a single number then count how many digits are in it. No more than 100 on screen at a time.
+      //This also helps fit displays where the user enters huge numbers 
+      if (outputs.join().replace(/,/g, '').split('').length > 100) {
         this.setState({ aboveMaxLength: true});
         return
       }
@@ -70,7 +71,6 @@ class App extends Component {
   }
 
   nextButton = () => {
-    console.log("ewafe");
     this.state.previousNumbers.push(this.state.numberCollection[0]);
     this.setState({
       inputNumber: this.state.numberCollection[this.state.numberCollection.length - 1],
@@ -130,13 +130,16 @@ class App extends Component {
           </div>
           <div id="graphWrapper">
             <div id="forwardBack">
+              <span>
             {this.state.previousNumbers.length ? (
                 <button id="back" onClick={this.backButton}> &#60; </button>
               ) : ('')}
-              
+              </span>
+              <span>
               {this.state.aboveMaxLength ? (
                 <button id="forward" onClick={this.nextButton}> &#62; </button>
               ) : ('')}
+              </span>
 
             </div>
             <Canvas 

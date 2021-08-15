@@ -22,7 +22,7 @@ const Canvas = (props) => {
         ctx.beginPath();
         ctx.strokeStyle = '#383f41'; // Vertical Graph Line
         ctx.moveTo(0, 0);
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 3;
         ctx.lineTo(0, -height);
         ctx.stroke();
 
@@ -37,6 +37,7 @@ const Canvas = (props) => {
             ctx.strokeStyle = "#383f41";
             x = (i+1)/(arrLength) * width * .95;
             xArray.push(x -5);
+            //The largest number in the array becomes the highest point in the graph, and all over numbers scale to that 
             y = array[i]/arrLargest * -height * .85;
             yArray.push(y -5);
             ctx.lineTo(x, y)
@@ -49,7 +50,7 @@ const Canvas = (props) => {
             ctx.strokeStyle = "#383f41"; 
 
             //Sets the size of each circle based on how many digits in each number for better fitting sizes.
-            let circleSize = array[i].toString().split('').length * 6 + 12;
+            let circleSize = array[i].toString().split('').length * 7 + 12;
 
             ctx.arc(xArray[i], yArray[i] - 8, circleSize, 0, 2 * Math.PI);
             ctx.stroke();
@@ -58,7 +59,7 @@ const Canvas = (props) => {
             ctx.fill();
             ctx.font = "bold 28px Arial";
             ctx.textAlign="center";
-            ctx.fillStyle = 'red';
+            ctx.fillStyle = 'black';
             ctx.fillText(array[i], xArray[i], yArray[i]);
         }
     }
