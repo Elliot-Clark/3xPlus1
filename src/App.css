@@ -123,3 +123,34 @@ Sidebar-Border: #646F71
     text-indent: 50px;
     font-size: 21px;
 }
+
+#infoText p {
+    padding: 1%;
+    height: 55%;
+    border: 2px solid #383f41;
+    border-right: hidden;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 50px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 20px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 20px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
