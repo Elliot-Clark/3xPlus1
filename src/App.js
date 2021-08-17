@@ -9,12 +9,22 @@ import './App.css';
 
 class App extends Component {
   
+  //inputNumber is the starting number for all graphing sequences. Not always the number the user input. If the 'forward' button is clicked, this will be the first number in the new sequence
+  //previousNumbers is a list of previous inputNumbers so the app can recall them when the user returns to previous numbers in a sequence above Max Length.
+  //numberCollection is the calculated list of all numbers set to be graphed, in the order they appear on screen.
+  //aboveMaxLength is turned true if there are more than 100 seperate digits on the graph at one time. Prevents overcrowding the screen, and signals for further calculations to be done to finish the sequence. Enables the forward button to see them.
+  //initialInputNumber is the number the user input for display purposes. Will not change until another is input by user.
+  //highestNumber is simply the highest number in the entire sequence, not just the display set
+  //lengthofSequence is the length of the entire sequence, not just the display set
+
   state = {
     inputNumber: '',
+    previousNumbers: [],
     numberCollection : [],
-    idle: true,
     aboveMaxLength: false,
-    previousNumbers: []
+    initialInputNumber: '',
+    highestNumber: "",
+    lengthOfSequence: ""
   }
 
   init = (ele) => {
@@ -23,7 +33,12 @@ class App extends Component {
       userInputtedNumber = ele;
     } else {
       userInputtedNumber = parseInt(document.getElementsByClassName("inputNumber")[0].value);
-      this.setState({ previousNumbers: [] });
+      this.setState({ 
+        previousNumbers: [],
+        initialInputNumber: userInputtedNumber,
+        highestNumber: "",
+        lengthOfSequence: ""
+      });
     }
     this.setState({ 
       inputNumber: userInputtedNumber,
@@ -44,22 +59,34 @@ class App extends Component {
       if (count === 1 && outputs.length > 10) {
         //When the sequence eventually reduces down to 1, the recursive process ends.
         //In the event you discover a number that doesn't reduce down to the 4,2,1 loop, contact your local mathematician. They should be very interested to hear about it.
+        if (this.state.previousNumbers.length === 0) {
+          this.setState({ 
+            highestNumber: Math.max.apply(Math, outputs),
+            lengthOfSequence: outputs.length
+          });
+        }
         return
       }
       //While not infinite, some numbers can have a sequence far to long to display so we limit the sequence
       //This is done by condensing the array of all numbers into a single number then count how many digits are in it. No more than 100 on screen at a time.
       //This also helps fit displays where the user enters huge numbers 
       if (outputs.join().replace(/,/g, '').split('').length > 100) {
-        this.setState({ aboveMaxLength: true});
+        this.setState({ 
+          aboveMaxLength: true
+        }, () => {
+          if (!this.state.highestNumber) {
+            this.secondaryComputation(Math.max.apply(Math, outputs), outputs[outputs.length-1], outputs.length);
+          }
+        });
         return
       }
-      if (count % 2 > 0) {
+      else if (count % 2 > 0) {
         //Odd Number. Multiply the number by 3 and add 1 then run method again.
         count = count * 3 + 1;
         outputs.push(count);
           calculate();
       }
-      if (count % 2 === 0) {
+      else if (count % 2 === 0) {
         //Even Number. Divide the number by 2 and run method again.
         count = count / 2;
         outputs.push(count);
@@ -68,6 +95,37 @@ class App extends Component {
     }
     calculate();
     this.setState({numberCollection: outputs});
+  }
+
+  //In the event of a sequence being to long this function finishes the calculation in order to display the largest number in the entire sequence.
+  secondaryComputation = (highestSoFar, currentNumber, length) => {
+    console.log(length);
+    length++;
+    if (currentNumber === 1) {
+      this.setState({ 
+        highestNumber: highestSoFar,
+        lengthOfSequence: length
+      }, () => {
+        return
+      });
+    }
+    else if (currentNumber % 2 > 0 && !this.state.highestNumber) {
+      currentNumber = currentNumber * 3 + 1;
+      if (currentNumber > highestSoFar) {
+        highestSoFar = currentNumber;
+      }
+      this.secondaryComputation(highestSoFar, currentNumber, length);
+    }
+    else if (currentNumber % 2 === 0 && !this.state.highestNumber) {
+      currentNumber = currentNumber / 2;
+      this.secondaryComputation(highestSoFar, currentNumber, length);
+    }
+  } 
+
+  doRandom = () => {
+    let randomNumber = Math.floor(Math.random() * 999999);
+    this.setState({ initialInputNumber: randomNumber});
+    this.init(randomNumber);
   }
 
   nextButton = () => {
@@ -99,30 +157,31 @@ class App extends Component {
         document.getElementsByClassName('inputNumber')[0].value = '';
       }
     });
-
-    // setInterval(() =>{
-    //   if (this.state.idle) {
-    //     let randomNumber = Math.floor(Math.random() * 999 + 10);
-    //   this.setState({ 
-    //     inputNumber: randomNumber,
-    //   }, () => {
-    //     this.mainComputation();
-    //   });
-    //   }
-    // }, 
-    //   4000
-    // );
   }
 
   render() {
-
     return (
       <div className="App">
 
-        <div id="sidebar">
+        <div id="leftsidebar">
           <div id="logo">3x + 1</div>
-          <div id="stats"></div>
-            
+          <div id="stats">
+            <ul>
+              <span>Input Number</span>
+              <p>{this.state.initialInputNumber}</p>
+            </ul>
+            <ul>
+              <span>Highest</span>
+              <p>{this.state.highestNumber}</p>
+            </ul>
+            <ul>
+              <span>Length</span>
+              <p>{this.state.lengthOfSequence}</p>
+            </ul>
+            <ul id="buttonContainer">
+              <button onClick={this.doRandom}>Random</button>
+            </ul>
+          </div>
         </div>
         <div id="rightWrapper">
           <div id="inputWrapper">
