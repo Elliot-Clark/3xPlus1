@@ -123,9 +123,11 @@ class App extends Component {
   } 
 
   doRandom = () => {
-    let randomNumber = Math.floor(Math.random() * 999999);
+    let randomNumber = Math.floor(Math.random() * 9999);
     this.setState({ initialInputNumber: randomNumber});
-    this.init(randomNumber);
+    document.getElementsByClassName("inputNumber")[0].value = randomNumber
+    this.init();
+    document.getElementsByClassName('inputNumber')[0].value = ''
   }
 
   nextButton = () => {
