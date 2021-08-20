@@ -213,7 +213,12 @@ class App extends Component {
               Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. 
               If the previous term is odd, the next term is 3 times the previous term plus 1. 
               The conjecture is that no matter what value of n, the sequence will always reach 1.
-
+              <br></br><br></br>
+              The conjecture has also been referred to as the simplest math problem no one can solve. 
+              For years mathematicians have tried to find a number that did not eventually reduce down to 1. 
+              If you can find that fabled number, I will give you a dollar.
+              <br></br><br></br>
+              Further information can be found in a detailed explaination video of the Collatz conjecture here: <a href="https://www.youtube.com/watch?v=094y1Z2wpJg">YouTube</a>
             </p>
           </div>
         </div>
