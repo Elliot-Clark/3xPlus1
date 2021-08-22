@@ -169,15 +169,15 @@ class App extends Component {
           <div id="logo">3x + 1</div>
           <div id="stats">
             <ul>
-              <span>Input Number</span>
+              <span>Input:</span>
               <p>{this.state.initialInputNumber}</p>
             </ul>
             <ul>
-              <span>Highest</span>
+              <span>Highest:</span>
               <p>{this.state.highestNumber}</p>
             </ul>
             <ul>
-              <span>Length</span>
+              <span>Length:</span>
               <p>{this.state.lengthOfSequence}</p>
             </ul>
             <ul id="buttonContainer">
@@ -186,6 +186,7 @@ class App extends Component {
           </div>
         </div>
         <div id="rightWrapper">
+          <p>Input any postive interger then hit Enter</p>
           <div id="inputWrapper">
             <input className="inputNumber" title="Input any positive integer and press Enter to run" placeholder="Enter..."></input>
           </div>
