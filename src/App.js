@@ -54,7 +54,8 @@ class App extends Component {
     if (count < 1) {
       return
     }
-    let outputs = [count]
+    let outputs = [count];
+    console.log(window.innerWidth / 18);
     const calculate = () => {
       if (count === 1 && outputs.length > 10) {
         //When the sequence eventually reduces down to 1, the recursive process ends.
@@ -68,9 +69,10 @@ class App extends Component {
         return
       }
       //While not infinite, some numbers can have a sequence far to long to display so we limit the sequence
-      //This is done by condensing the array of all numbers into a single number then count how many digits are in it. No more than 100 on screen at a time.
+      //This is done by condensing the array of all numbers into a single number then count how many digits are in it. 
+      //The exact amount of digits is dependant on screen width
       //This also helps fit displays where the user enters huge numbers 
-      if (outputs.join().replace(/,/g, '').split('').length > 100) {
+      if (outputs.join().replace(/,/g, '').split('').length > (window.innerWidth / 18)) {
         this.setState({ 
           aboveMaxLength: true
         }, () => {
@@ -99,7 +101,6 @@ class App extends Component {
 
   //In the event of a sequence being to long this function finishes the calculation in order to display the largest number in the entire sequence.
   secondaryComputation = (highestSoFar, currentNumber, length) => {
-    console.log(length);
     length++;
     if (currentNumber === 1) {
       this.setState({ 
