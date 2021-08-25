@@ -2,10 +2,11 @@ import React, { useRef, useEffect } from 'react'
 
 const Canvas = (props) => {
 
-    const canvasRef = useRef(null)
+    const canvasRef = useRef(null);
 
     let array = props.numberCollection;
     let arrLength = array.length;
+    //arrLargest is the largest number in the array, used to scale all number placements in a given display
     let arrLargest = Math.max.apply(Math, array);
     if (arrLargest < 5) {
         arrLargest = 20;

@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import Canvas from './Canvas'
 import './App.css';
 
-// Show inputted number 
-// Show highest number
-// Show length of sequences
-// Button for Random
-
 class App extends Component {
   
   //inputNumber is the starting number for all graphing sequences. Not always the number the user input. If the 'forward' button is clicked, this will be the first number in the new sequence
@@ -27,6 +22,7 @@ class App extends Component {
     lengthOfSequence: ""
   }
 
+  //This function signals the start of every caculation to run, clearing previous inits if started from user input 
   init = (ele) => {
     let userInputtedNumber;
     if (ele) {
@@ -49,13 +45,13 @@ class App extends Component {
     });
   }
 
+  //This is the main function responsible for determining every number you see graphed on the screen
   mainComputation = () => {
     let count = this.state.inputNumber
     if (count < 1) {
       return
     }
     let outputs = [count];
-    console.log(window.innerWidth / 18);
     const calculate = () => {
       if (count === 1 && outputs.length > 10) {
         //When the sequence eventually reduces down to 1, the recursive process ends.
@@ -110,6 +106,7 @@ class App extends Component {
         return
       });
     }
+    //If the number is ODD multipy it by 3 and add 1
     else if (currentNumber % 2 > 0 && !this.state.highestNumber) {
       currentNumber = currentNumber * 3 + 1;
       if (currentNumber > highestSoFar) {
@@ -117,14 +114,15 @@ class App extends Component {
       }
       this.secondaryComputation(highestSoFar, currentNumber, length);
     }
+    //If the number is EVEN divide by 2
     else if (currentNumber % 2 === 0 && !this.state.highestNumber) {
       currentNumber = currentNumber / 2;
       this.secondaryComputation(highestSoFar, currentNumber, length);
     }
   } 
 
-  doRandom = () => {
-    let randomNumber = Math.floor(Math.random() * 9999);
+  randomButton = () => {
+    let randomNumber = Math.floor(Math.random() * 5999);
     this.setState({ initialInputNumber: randomNumber});
     document.getElementsByClassName("inputNumber")[0].value = randomNumber
     this.init();
@@ -154,6 +152,7 @@ class App extends Component {
     const runStart = () => {
       this.init();
     }
+    //Setting the Enter key to run the program
     document.getElementsByClassName('inputNumber')[0].addEventListener("keyup",function(e){
       if (e.keyCode === 13) {
         runStart();
@@ -182,7 +181,7 @@ class App extends Component {
               <p>{this.state.lengthOfSequence}</p>
             </ul>
             <ul id="buttonContainer">
-              <button onClick={this.doRandom}>Random</button>
+              <button onClick={this.randomButtom}>Random</button>
             </ul>
           </div>
         </div>
