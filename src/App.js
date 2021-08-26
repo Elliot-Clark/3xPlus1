@@ -66,8 +66,8 @@ class App extends Component {
       }
       //While not infinite, some numbers can have a sequence far to long to display so we limit the sequence
       //This is done by condensing the array of all numbers into a single number then count how many digits are in it. 
-      //The exact amount of digits is dependant on screen width
-      //This also helps fit displays where the user enters huge numbers 
+      //The exact amount of digits is dependent on screen width
+      //This also helps fit displays where the user enters large numbers 
       if (outputs.join().replace(/,/g, '').split('').length > (window.innerWidth / 18)) {
         this.setState({ 
           aboveMaxLength: true
@@ -181,7 +181,7 @@ class App extends Component {
               <p>{this.state.lengthOfSequence}</p>
             </ul>
             <ul id="buttonContainer">
-              <button onClick={this.randomButtom}>Random</button>
+              <button onClick={this.randomButton}>Random</button>
             </ul>
           </div>
         </div>
