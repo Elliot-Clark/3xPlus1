@@ -11,7 +11,7 @@ const Canvas = (props) => {
     if (arrLargest < 5) {
         arrLargest = 20;
     }
-
+    
     const width = window.innerWidth;
     const height = window.innerHeight * .5;
     

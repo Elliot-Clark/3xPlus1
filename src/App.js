@@ -48,6 +48,7 @@ class App extends Component {
   //This is the main function responsible for determining every number you see graphed on the screen
   mainComputation = () => {
     let count = this.state.inputNumber
+    //Exit from function if input is not a positive int
     if (count < 1) {
       return
     }
@@ -152,7 +153,7 @@ class App extends Component {
     const runStart = () => {
       this.init();
     }
-    //Setting the Enter key to run the program
+    //Setting the Enter key to run the program when hit from input bar
     document.getElementsByClassName('inputNumber')[0].addEventListener("keyup",function(e){
       if (e.keyCode === 13) {
         runStart();
