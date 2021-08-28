@@ -1,22 +1,9 @@
-/* 
-BG-Color : #191F23
-Main-Text : #717577
-Sidebar-Color: #12181C
-Sidebar-Text: #767D80
-Sidebar-Border: #646F71
-
-*/
-
 .App {
     background-color: #191F23;
     display: flex;
     color: #717577;
     overflow: hidden;
 }
-
-/* * {
-    border: dotted 5px black;
-} */
 
 #leftsidebar {
     height: 100vh;
@@ -31,7 +18,7 @@ Sidebar-Border: #646F71
     width:  98%;
     background-color: #121a1d;
     border-bottom: 2px solid #383f41;
-    font-size: 3rem;
+    font-size: 2.4rem;
     text-align: center;
     font-family: "Times New Roman", Times, serif;
 }
@@ -186,4 +173,27 @@ Sidebar-Border: #646F71
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    #logo {
+        font-size: 3vw;
+    }
+
+    #stats ul {
+        margin: 10px;
+    }
+
+    #stats span {
+        font-size: 14px;
+    }
+
+    #stats p {
+        font-size: 3vw;
+    }
+    
+    #stats button {
+        font-size: 13px;
+    }
+    
   }
