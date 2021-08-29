@@ -124,10 +124,6 @@
     color: green;
 }
 
-#back {
-
-}
-
 .graph {
     min-width: 80%;
     min-height: 65vh;
@@ -151,6 +147,10 @@
     border-right: hidden;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+#infoText a {
+    color: yellow;
 }
 
 ::-webkit-scrollbar {

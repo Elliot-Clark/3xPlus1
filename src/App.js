@@ -187,7 +187,6 @@ class App extends Component {
           </div>
         </div>
         <div id="rightWrapper">
-          <p>Input any postive interger then hit Enter</p>
           <div id="inputWrapper">
             <input className="inputNumber" title="Input any positive integer and press Enter to run" placeholder="Enter..."></input>
           </div>
