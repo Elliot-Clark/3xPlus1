@@ -44,6 +44,7 @@
 
 #stats p {
     font-size: 25px;
+    overflow: hidden;
 }
 
 #stats button {
@@ -76,7 +77,7 @@
 .inputNumber {
     display: block;
     height: 35px;
-    width: 8vw;
+    width: 10vw;
     min-width: 105px;
     margin: 1rem;
     margin-left: 5vw;

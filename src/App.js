@@ -188,7 +188,7 @@ class App extends Component {
         </div>
         <div id="rightWrapper">
           <div id="inputWrapper">
-            <input className="inputNumber" title="Input any positive integer and press Enter to run" placeholder="Enter..."></input>
+            <input className="inputNumber" title="Input any positive integer and press Enter to run" placeholder="Enter a number..."></input>
           </div>
           <div id="graphWrapper">
             <div id="forwardBack">
