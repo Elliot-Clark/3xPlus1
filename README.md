@@ -1,6 +1,6 @@
 # Collatz Conjecture
 
-[img]https://i.imgur.com/6UlgFyO.png[/img]
+![Collatz Conjecture web app being used](https://i.imgur.com/6UlgFyO.png)
 
 This is a web app I made to calculate and display the values derived from any inputted interger under the Collatz conjecture.
 
